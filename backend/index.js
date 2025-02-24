@@ -28,8 +28,8 @@ app.use(cors({
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use(express.json()); // Parse JSON requests
+// Middleware (Parse JSON requests)
+app.use(express.json());
 
 // API Routes
 app.use('/api/projects', projectRoutes); 

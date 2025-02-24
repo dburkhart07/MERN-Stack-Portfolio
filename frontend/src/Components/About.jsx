@@ -4,18 +4,18 @@ import Song from './Reusables/Song';
 import axios from 'axios';
 
 const About = () => {
-  const [songs, setSongs] = useState([]);  // State to store fetched songs
+  const [songs, setSongs] = useState([]);
 
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
   useEffect(() => {
-    axios.get(`${API_BASE_URL}/api/songs`)  // Backend endpoint
+    axios.get(`${API_BASE_URL}/api/songs`)
       .then((response) => {
         const fetchedSongs = response.data.map((song) => ({
-          embedUrl: song.embedUrl,  // Correctly map the embedUrl
-          delay: song.delay,         // Correctly map the delay
+          embedUrl: song.embedUrl,
+          delay: song.delay, 
         }));
-        setSongs(fetchedSongs);  // Update state with mapped data
+        setSongs(fetchedSongs);
         console.log(fetchedSongs);
       })
       .catch((error) => console.error('Error fetching song data:', error));

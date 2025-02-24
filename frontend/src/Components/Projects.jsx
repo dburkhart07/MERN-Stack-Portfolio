@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import ProjectCard from './Reusables/ProjectCard';  // Import your ProjectCard component
+import ProjectCard from './Reusables/ProjectCard';
 import axios from 'axios';
 
 const Projects = () => {
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
-  const [projects, setProjects] = useState([]);  // State to store fetched projects
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     // Fetch project data from the backend
-    axios.get(`${API_BASE_URL}/api/projects`)  // Backend endpoint
+    axios.get(`${API_BASE_URL}/api/projects`)
       .then((response) => {
-        // Directly map the response data to match the ProjectCard props
         const fetchedProjects = response.data.map((project) => ({
           title: project.title,
           image: project.image,
-          techStack: project.techStack.join(', '),  // Convert tech stack array to string
+          techStack: project.techStack.join(', '),
           projectLink: project.projectLink,
-          delay: project.delay,  // Use delay as provided by the backend
+          delay: project.delay,
         }));
-        setProjects(fetchedProjects);  // Update state with mapped data
+        setProjects(fetchedProjects);
       })
       .catch((error) => console.error('Error fetching project data:', error));
   }, []);
@@ -29,7 +28,7 @@ const Projects = () => {
         className="flex justify-center text-3xl md:text-4xl lg:text-5xl font-bold mb-12"
         style={{
           animation: `fadeInUp 2s ease-out forwards`,
-          opacity: 0, // Start with an invisible state
+          opacity: 0,
         }}
       >
         Projects

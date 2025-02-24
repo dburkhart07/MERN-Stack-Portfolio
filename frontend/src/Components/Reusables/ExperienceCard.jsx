@@ -9,7 +9,7 @@ const ExperienceCard = ({ company, dates, description, delay, isOpen, toggleExpa
       style={{
         animation: `fadeInUp 1s ease-out forwards, bobbing 3s ease-in-out infinite`,
         animationDelay: `${delay}s`,
-        opacity: 0, // Start with an invisible state
+        opacity: 0,
       }}
     >
       <div
@@ -39,7 +39,6 @@ const ExperienceCard = ({ company, dates, description, delay, isOpen, toggleExpa
               {company}
             </p>
             <div className="pt-[2rem] pl-[1.5rem] pr-[2rem] text-white text-[16px] leading-relaxed flex-grow whitespace-pre-wrap break-words">
-              {/* Render each description line as a separate paragraph */}
               {description.map((line, index) => (
                 <p key={index} className="mb-2">
                   {line}

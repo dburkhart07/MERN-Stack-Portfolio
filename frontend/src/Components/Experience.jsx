@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ExperienceCard from './Reusables/ExperienceCard'; // Assuming you have this component
-import ExpImg from '../Img/experience_bg.svg'; // Background image for experience section
+import ExperienceCard from './Reusables/ExperienceCard';
+import ExpImg from '../Img/experience_bg.svg';
 
 const Experience = () => {
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
-  const [experience, setExperience] = useState([]); // State to store experience data
-  const [openIndex, setOpenIndex] = useState(null); // State to store which card is open
+  const [experience, setExperience] = useState([])
+  const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
     // Fetch experience data from the backend
@@ -18,13 +18,12 @@ const Experience = () => {
           description: exp.description,
           delay: exp.delay,
         }));
-        setExperience(fetchedExperience); // Update state with fetched data
+        setExperience(fetchedExperience);
       })
       .catch((error) => console.error('Error fetching experience data:', error));
   }, []);
 
   const toggleCard = (index) => {
-    // Toggle card visibility: if the clicked card is already open, close it; otherwise, open it.
     setOpenIndex(prevIndex => (prevIndex === index ? null : index));
   };
 
@@ -34,11 +33,9 @@ const Experience = () => {
         Work Experience
       </h1>
       <div className="flex flex-col lg:flex-row justify-center lg:justify-between">
-        {/* Left Column - Experience Cards */}
+
         <div className="w-full lg:w-1/2 px-4">
-          {/* Scrollable container for experience */}
           <div className="h-[30rem] overflow-y-auto space-y-4 scrollbar-none">
-          {/* Map through experiences and render each card */}
           {experience.map((exp, index) => (
             <div
               key={index}
@@ -50,19 +47,18 @@ const Experience = () => {
                 dates={exp.dates}
                 description={exp.description}
                 delay={exp.delay}
-                isOpen={openIndex === index}  // Determine if the card is open
-                toggleExpand={() => toggleCard(index)}  // Toggle the open card
+                isOpen={openIndex === index}
+                toggleExpand={() => toggleCard(index)}
               />
             </div>
           ))}
           </div>
         </div>
 
-        {/* Right Column - Background Image */}
         <div className="relative w-full lg:w-1/2 mt-8 lg:mt-0 px-4"
              style={{
                animation: `fadeInUp 2.5s ease-out forwards`,
-               opacity: 0, // Start with an invisible state
+               opacity: 0,
              }}>
           <img
             src={ExpImg}

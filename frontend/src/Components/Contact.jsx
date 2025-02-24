@@ -8,6 +8,7 @@ const Contact = () => {
     const navigate = useNavigate();
 
     const isValidEmail = (email) => {
+        // No spaces or @ (only one @ allowe), must have text before it, and after it
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
@@ -41,7 +42,7 @@ const Contact = () => {
                 }
             );
     };
-    // TEST COMMENT aaaa
+
     const sendConfirmationEmail = (recipientName, recipientEmail) => {
         emailjs.send('service_nj4aeh5', 'template_iv4xktv', {
             to_name: recipientName,
@@ -60,7 +61,6 @@ const Contact = () => {
     return (
         <div className='container contact-page text-[rgb(255,233,209)] px-10 h-full md:h-auto'>
             <div className='flex flex-col md:flex-row justify-between items-start'>
-                {/* Left Section: Contact Form */}
                 <div className='text-zone ml-6 w-full md:w-1/2 mb-10'>
                     <div style={{
                         animation: `fadeInUp 1s ease-out forwards`,

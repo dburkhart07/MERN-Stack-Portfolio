@@ -15,14 +15,12 @@ function Header() {
     <header className="bg-[rgb(102,34,0)] text-[rgb(255,233,209)] py-4">
       <nav className="container mx-auto flex justify-between px-4 md:px-8">
         <h1 className="text-2xl font-bold">My Portfolio</h1>
-        {/* Hamburger icon */}
         <div className="md:hidden items-center">
           <button onClick={toggleMenu}>
             <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-2xl" />
           </button>
         </div>
 
-        {/* Nav items */}
         <div className={`md:flex ${isOpen ? 'flex' : 'hidden'} transition-all duration-300 ease-in-out`}>
           <ul className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6 md:items-center">
             <li>

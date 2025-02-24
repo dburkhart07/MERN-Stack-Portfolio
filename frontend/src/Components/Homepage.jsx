@@ -15,7 +15,7 @@ function Homepage() {
   return (
     <section className="flex flex-col items-center bg-[rgb(85,17,0)] text-[rgb(255,233,209)] pt-12 p-4">
       <div className="grid grid-cols-1 gap-[50px] px-4 md:px-20">
-        {/* Card 1 */}
+
         <Card className="w-full md: w-[80%] mx-auto px-4" title="Hi, I'm Dalton!">
           <div className="flex flex-col md:flex-row items-start">
             <div className="flex-1">
@@ -38,7 +38,6 @@ function Homepage() {
           </div>
         </Card>
 
-        {/* Card 2 */}
         <Card className="w-full md:w-[80%] mx-auto px-4" title="Who am I" delay={0.5}>
           <div className="flex flex-col md:flex-row justify-center items-center">
             <div className="w-full md:w-1/2 pr-4">
@@ -58,13 +57,11 @@ function Homepage() {
           </div>
         </Card>
 
-        {/* Card 3 - Switched Column Layout with Cloud */}
+
         <Card className="w-full md:w-[80%] mx-auto px-4 max-w-4xl mx-auto p-6" title="My Skills/Favorite Technologies" delay={1}>
           <div className="flex flex-col md:flex-row">
-              {/* Left Column - Buttons, Skills, Navigation */}
               <div className="flex-1 pb-[2rem] md:pb-0 w-full md:w-1/2 order-1">
                   <div className="flex flex-col space-y-4">
-                      {/* Skill Category Buttons */}
                       <div>
                           <button
                               onClick={() => setSelectedCategory('languages')}
@@ -86,7 +83,6 @@ function Homepage() {
                           </button>
                       </div>
 
-                      {/* Skills Language Section */}
                       <div className="pb-[2rem]">
                           {selectedCategory === 'languages' && (
                               <SkillsLanguage
@@ -123,7 +119,6 @@ function Homepage() {
                           )}
                       </div>
 
-                      {/* Navigation Links */}
                       <div className="flex space-x-4 mt-8">
                           <NavLink to="/projects" className="bg-gradient-to-r from-orange-400 to-red-500 text-white rounded-md px-6 py-2 transition duration-300 hover:bg-orange-500">
                               See my Projects
@@ -135,7 +130,6 @@ function Homepage() {
                   </div>
               </div>
 
-              {/* Right Column - Icon Cloud */}
               <div className="flex-1 flex items-center justify-center mt-10 md:mt-0 w-full md:w-full order-2 md:order-2">
                 <div className="relative mx-auto w-full md:block">
                     <MemoizedIconCloudDemo />
