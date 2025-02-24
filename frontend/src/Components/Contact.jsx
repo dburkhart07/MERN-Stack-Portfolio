@@ -2,11 +2,8 @@ import React from 'react';
 import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Contact = () => {
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000"; 
-
     const refForm = useRef();
     const navigate = useNavigate();
 
@@ -36,7 +33,6 @@ const Contact = () => {
         emailjs.sendForm('service_nj4aeh5', 'template_ogqgudi', refForm.current, 'cY2UcSIMLnEaSJ-1P')
             .then(
                 (response) => {
-                    saveFormDataToBackend(name, email, subject, message);
                     sendConfirmationEmail(name, email);
                     navigate('../Confirmation');
                 },
@@ -59,21 +55,6 @@ const Contact = () => {
                     console.error('Failed to send confirmation email.', error);
                 }
             );
-    };
-
-    const saveFormDataToBackend = (name, email, subject, message) => {
-        axios.post(`${API_BASE_URL}/api/contact`, {
-            name,
-            email,
-            subject,
-            message,
-        })
-        .then(response => {
-            console.log('Form data saved:', response.data);
-        })
-        .catch(error => {
-            console.error('Error saving form data:', error);
-        });
     };
 
     return (
