@@ -41,7 +41,7 @@ const Contact = () => {
                 }
             );
     };
-    // TEST COMMENT
+    // TEST COMMENT aaaa
     const sendConfirmationEmail = (recipientName, recipientEmail) => {
         emailjs.send('service_nj4aeh5', 'template_iv4xktv', {
             to_name: recipientName,
