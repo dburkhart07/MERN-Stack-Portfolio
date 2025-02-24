@@ -5,8 +5,11 @@ import App from './App';
 import './index.css';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-const API_URL = process.env.REACT_API_BASE_URL;
-if (API_URL == 'https://dalton-burkhart-backend.onrender.com') disableReactDevTools()
+const API_URL = process.env.REACT_APP_API_BASE_URL;
+
+if (API_URL === 'https://localhost:5000') {
+  disableReactDevTools();
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
